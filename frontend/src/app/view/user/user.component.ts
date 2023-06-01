@@ -39,7 +39,6 @@ export class UserComponent implements OnInit {
     if (this.UserForm.invalid && this.passport!=undefined && this.passport?.size > 0) {
       return;
     }
-    //this.UserForm.get('passport')!.setValue(this.passport);
     let user = this.UserForm.getRawValue();
     this.UserService.addUser(user).subscribe(data => {
       this.users.data.push(data);

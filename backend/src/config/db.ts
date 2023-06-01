@@ -9,7 +9,6 @@ export class Database {
     private connection!: Connection;
 
     constructor(){
-        this.connect()
     }
     public async connect(): Promise<void> {
         try {
