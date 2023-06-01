@@ -1,0 +1,37 @@
+<div class="d-block container">
+  <div class="d-flex flex-end">
+    <button mat-raised-button color="primary" class="w-100" (click)="openDialog(UserDialog)">Ajouter user</button>
+  </div>
+
+  <table mat-table [dataSource]="users" class="mat-elevation-z8 w-100 mt-5">
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name</th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="passport">
+      <th mat-header-cell *matHeaderCellDef> passport</th>
+      <td mat-cell *matCellDef="let element">{{media_url+element.passport}} </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <ng-template #UserDialog>
+
+    <form class="d-block" [formGroup]="UserForm" (ngSubmit)="saveUser()">
+        <label>name</label>
+        <input  placeholder="name" formControlName="name">
+        <label>passport</label>
+        <input class="my-5" type="file" (change)="setFile($event.target)">
+      <button mat-raised-button color="primary"  type="submit">Ajouter</button>
+    </form>
+
+
+  </ng-template>
+
+
+</div>
